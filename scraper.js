@@ -81,6 +81,7 @@ function generateHtml(db) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="rss.xml" rel="alternate" title="Ofertas Wizink" type="application/rss+xml">
   <title>Wizink Offers</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
@@ -90,7 +91,7 @@ function generateHtml(db) {
   </style>
 </head>
 <body>
-  <h1>Ofertas Wizink</h1>
+  <h1>Ofertas Wizink <a href="rss.xml">[RSS]</a></h1>
   <table>
     <thead>
       <tr>
