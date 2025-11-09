@@ -1,4 +1,5 @@
 const cheerio = require("cheerio");
+const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 
@@ -124,7 +125,7 @@ function generateRss(db) {
         <link>${entry.url}</link>
         <description>De ${entry.start} a ${entry.end}</description>
         <pubDate>${new Date(entry.start).toUTCString()}</pubDate>
-        <guid>${entry.url}#${entry.start}</guid>
+        <guid>${crypto.createHash("sha256").update(`${entry.url}#${entry.start}`, "utf8").digest("hex")}</guid>
       </item>
       `;
     })
