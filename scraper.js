@@ -117,7 +117,7 @@ function generateRss(db) {
   const items = db
     .map((entry) => {
       const expired = new Date(`${entry.end}T23:59:59Z`) < now;
-      // if (expired) return;
+      if (expired) return;
 
       return `
       <item>
