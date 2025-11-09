@@ -1,0 +1,12 @@
+{
+  "name": "wizink-scraper",
+  "version": "1.0.0",
+  "description": "Scraper for Wizink offer pages",
+  "main": "scraper.js",
+  "scripts": {
+    "start": "node scraper.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.1.2"
+  }
+}
