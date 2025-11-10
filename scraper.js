@@ -92,7 +92,7 @@ function generateHtml(db) {
   </style>
 </head>
 <body>
-  <h1>Ofertas Wizink <a href="rss.xml">[RSS]</a></h1>
+  <h1>Ofertas Wizink <a href="rss.xml">[RSS]</a> <a href="https://www.globalbox.pt/oferta/Login.aspx" target="_blank">[Tracking de encomendas]</a></h1>
   <table>
     <thead>
       <tr>
