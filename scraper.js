@@ -28,6 +28,8 @@ const months = [
 
 async function scrape(url) {
   const response = await fetch(url);
+  if (response.status >= 400) return null;
+
   const text = await response.text();
   if (/não temos nenhuma campanha especial, de momento/i.test(text)) return null;
 
