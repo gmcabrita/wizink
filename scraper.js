@@ -35,8 +35,15 @@ async function scrape(url) {
 
   const $ = cheerio.load(text);
 
-  const offer = $(".offer__name").text().replace(/\s+/g, " ").trim();
-  const timeInterval = $(".conditions__text > ul > li:first").text().replace(/\s+/g, " ").trim();
+  const offer = ($(".offer__name").text() || $(".offer__campanha__name").text())
+    .replace(/\s+/g, " ")
+    .trim();
+  const timeInterval = (
+    $(".conditions__text > ul > li:first").text() ||
+    $(".conditions__campanha__text > ul > li:first").text()
+  )
+    .replace(/\s+/g, " ")
+    .trim();
 
   const multiDayMatch = timeInterval.match(/(\d+) a (\d+) de ([^\d]+) de (\d{4})/);
   const singleDayMatch = timeInterval.match(/(\d+) de ([^\d]+) de (\d{4})/);
@@ -56,7 +63,7 @@ async function scrape(url) {
     start = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
     end = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
   } else {
-    throw "Failed to parse time interval!";
+    throw `Failed to parse time interval! url=${url} offer=${offer} timeInterval=${timeInterval}`;
   }
 
   return { start, end, url, offer };
